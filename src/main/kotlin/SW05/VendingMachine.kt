@@ -41,51 +41,45 @@ fun main() {
         option = readln().toInt()
         when (option) {
             INSERT_COINS -> {
-                try {
-                    do {
-                        print("Please insert your coins")
+                do {
+                    print("Please insert your coins")
 
-                        var doneInserting = false
-                        val coin = readln().toDouble()
+                    var doneInserting = false
+                    val coin = readln().toDouble()
 
-                        if ((coin == 0.1) or
-                            (coin == 0.2) or
-                            (coin == 0.5) or
-                            (coin == 1.0) or
-                            (coin == 2.0) or
-                            (coin == 5.0)) {
-                            credit += coin
-                            credit = "%.2f".format(credit).toDouble()
-                            println("Credits available: $credit")
-                        }
-                        else {
-                            println("Only the following coins exist: 0.1, 0.2, 0.5, 1.0, 2.0, 5.0")
-                        }
+                    if (coin == 0.1 ||
+                        coin == 0.2 ||
+                        coin == 0.5 ||
+                        coin == 1.0 ||
+                        coin == 2.0 ||
+                        coin == 5.0) {
+                        credit += coin
+                        credit = "%.2f".format(credit).toDouble()
+                        println("Credits available: $credit")
+                    }
+                    else {
+                        println("Only the following coins exist: 0.1, 0.2, 0.5, 1.0, 2.0, 5.0")
+                    }
 
-                        println("Do you want to insert more coins? (y/n)")
+                    println("Do you want to insert more coins? (y/n)")
 
-                        val userInput = readln()
+                    val userInput = readln()
 
-                        when {
-                            (userInput == "y") -> {
-                                continue
-                            }
-
-                            (userInput == "n") -> {
-                                doneInserting = true
-                            }
+                    when {
+                        (userInput == "y") -> {
+                            continue
                         }
 
-                    } while (doneInserting.not())
+                        (userInput == "n") -> {
+                            doneInserting = true
+                        }
+                    }
 
-
-                } catch (exception: NumberFormatException) {
-                    println("Not a valid coin")
-                }
+                } while (!doneInserting)
             }
 
             COFFEE -> {
-                if (hasEnoughWater and hasEnoughCredit(COFFEE_PRICE)) {
+                if (hasEnoughWater && hasEnoughCredit(COFFEE_PRICE)) {
                     println("Enjoy your coffee ☕️")
                     credit -= COFFEE_PRICE
                     credit = "%.2f".format(credit).toDouble()
@@ -96,9 +90,9 @@ fun main() {
                         refill(1000)
                     }
                 } else {
-                    if(hasEnoughWater.not())
+                    if(!hasEnoughWater)
                         println("Not enough water left for a coffee")
-                    if(hasEnoughCredit(COFFEE_PRICE).not())
+                    if(!hasEnoughCredit(COFFEE_PRICE))
                         println("Not enough credit left for a coffee")
                 }
             }
@@ -115,7 +109,7 @@ fun main() {
             }
 
             TEA -> {
-                if (hasEnoughWater and hasEnoughCredit(TEA_PRICE)) {
+                if (hasEnoughWater && hasEnoughCredit(TEA_PRICE)) {
                     println("Enjoy your tea 🫖")
                     credit -= TEA_PRICE
                     credit = "%.2f".format(credit).toDouble()
@@ -126,9 +120,9 @@ fun main() {
                         refill(1000)
                     }
                 } else {
-                    if(hasEnoughWater.not())
+                    if(!hasEnoughWater)
                         println("Not enough water left for a tea")
-                    if(hasEnoughCredit(TEA_PRICE).not())
+                    if(!hasEnoughCredit(TEA_PRICE))
                         println("Not enough credit left for a tea")
                 }
             }

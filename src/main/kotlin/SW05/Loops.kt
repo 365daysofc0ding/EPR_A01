@@ -18,4 +18,8 @@ fun main() {
         println("My counter: $i")
         i++
     } while (i < 10)
+
+    repeat(3) {
+        println("Number $it")
+    }
 }
