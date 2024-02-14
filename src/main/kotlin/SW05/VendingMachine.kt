@@ -54,7 +54,7 @@ fun main() {
                         coin == 2.0 ||
                         coin == 5.0) {
                         credit += coin
-                        credit = "%.2f".format(credit).toDouble()
+                        credit = "%.2f".format(credit).toDouble() // subtraction isn't 100% accurate, this is a fix to round to two decimal places
                         println("Credits available: $credit")
                     }
                     else {
@@ -76,11 +76,13 @@ fun main() {
                     }
 
                 } while (!doneInserting)
+
+                println("Choose your drink now")
             }
 
             COFFEE -> {
                 if (hasEnoughWater && hasEnoughCredit(COFFEE_PRICE)) {
-                    println("Enjoy your coffee ☕️")
+                    println("Enjoy your coffee")
                     credit -= COFFEE_PRICE
                     credit = "%.2f".format(credit).toDouble()
                     println("Credits left $credit")
@@ -99,7 +101,7 @@ fun main() {
 
             HOT_CHOCOLATE -> {
                 if (hasEnoughCredit(HOT_CHOCOLATE_PRICE)) {
-                    println("Enjoy your hot chocolate 🍫️")
+                    println("Enjoy your hot chocolate")
                     credit -= HOT_CHOCOLATE_PRICE
                     credit = "%.2f".format(credit).toDouble()
                     println("Credits left $credit")
@@ -110,7 +112,7 @@ fun main() {
 
             TEA -> {
                 if (hasEnoughWater && hasEnoughCredit(TEA_PRICE)) {
-                    println("Enjoy your tea 🫖")
+                    println("Enjoy your tea")
                     credit -= TEA_PRICE
                     credit = "%.2f".format(credit).toDouble()
                     println("Credits left $credit")
