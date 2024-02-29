@@ -11,7 +11,7 @@ val COFFEE_PRICE = 1.0
 val HOT_CHOCOLATE_PRICE = 1.1
 val TEA_PRICE = 0.8
 
-val COINS = listOf(0.1, 0.2, 0.5, 1.00, 2.00, 2.50)
+var COINS = listOf(0.1, 0.2, 0.5, 1.00, 2.00, 2.50)
 
 var option = 0
 var waterLevel = 1000.0
@@ -132,8 +132,8 @@ fun main() {
             }
 
             CHANGE -> {
-                println("Total credit refunded: $credit ")
-                for (coin in COINS.sortedDescending()) {
+                println("Total credit to be refunded: $credit ")
+                for (coin in COINS.asReversed()) {
                     while (credit >= coin) {
                         credit -= coin;
                         println("$coin change")
